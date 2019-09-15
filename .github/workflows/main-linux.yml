@@ -1,0 +1,15 @@
+name: Linux CI
+
+on: [push]
+
+jobs:
+  build_and_test:
+    name: Build and Test Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Swift Build and Test
+        uses: "docker://bluk/docker-swift-build-tools@sha256:25dce8441a211ed6e0a6e98a405603b2487ff3a0c077ad07cf70205cf7d26740"
+        with:
+          args: swift test
